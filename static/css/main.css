@@ -98,14 +98,20 @@ nav a.active{
     margin: auto;
 }
 
-.columns:after {
+.row {
+    display: block;
+}
+
+.row:after {
     content: "";
     display: table;
     clear: both;
 }
 
-.column-full {
-    display: block;
+.columns:after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
 .column-half {
