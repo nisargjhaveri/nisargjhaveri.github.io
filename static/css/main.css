@@ -42,39 +42,34 @@ nav a:hover{
     color: #f17575;
 }
 
-section {
+nav a.active{
+    color: #f17575;
+}
+
+article, section {
     box-sizing: border-box;
     color: #555;
     line-height: 2em;
     padding: 1em;
 }
 
-section h2 {
+article h2 {
     font-weight: 500;
     font-style: italic;
 }
 
-section h3 {
+article h3 {
     font-weight: 500;
     font-style: italic;
 }
 
-section a {
+article a {
     text-decoration: none;
     color: #2da9d2;
 }
 
-section li {
+article li {
     margin: 0.5em 0 0.5em 0;
-}
-
-section.parent {
-    margin: 2em 0 2em 0;
-}
-
-section.subsection {
-    margin: 0;
-    padding: 0.4em;
 }
 
 th, td {
@@ -89,13 +84,19 @@ th, td {
     text-align: right;
 }
 
-nav a.active{
-    color: #f17575;
-}
-
 .container {
     max-width: 960px;
     margin: auto;
+}
+
+.parent {
+    margin: 2em 0 2em 0;
+    padding: 1em;
+}
+
+.subsection {
+    margin: 0;
+    padding: 0.4em;
 }
 
 .row {
@@ -136,7 +137,7 @@ nav a.active{
 }
 
 @media (max-width: 600px) {
-    section {
+    article, section {
         padding: 0;
     }
 
