@@ -76,6 +76,7 @@ th, td {
     padding: 0 0.5em 0 0.5em;
 }
 
+/* Some utility classes */
 .left {
     text-align: left;
 }
@@ -84,6 +85,75 @@ th, td {
     text-align: right;
 }
 
+.light {
+    color: #888;
+}
+
+.big {
+    font-size: 1.2em;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.indent {
+    margin-left: 1em;
+}
+
+.indent-2 {
+    margin-left: 2em;
+}
+
+.semantic-list {
+    list-style: none;
+    padding: 0;
+}
+
+/* Form elements */
+.input-parent {
+    margin: 1em;
+    padding: 1em;
+}
+
+.input-parent label[for] {
+    display: none;
+}
+
+.input-text, .input-area {
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 1em;
+    border: 1px solid rgba(40,40,40,.2);
+    border-radius: 4px;
+}
+
+.input-text:focus, .input-area:focus {
+    outline: none;
+    background-color: #fcf7f7;
+}
+
+.input-text {
+}
+
+.input-area {
+    max-width: 100%;
+    min-height: 8em;
+}
+
+.btn[type=submit] {
+    margin: 1em 0;
+    padding: 1em;
+    background: #4e82ce;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* Page layout classes */
 .container {
     max-width: 960px;
     margin: auto;
