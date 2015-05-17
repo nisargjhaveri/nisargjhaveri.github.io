@@ -63,7 +63,7 @@ article h3 {
     font-style: italic;
 }
 
-article a {
+article a, footer a {
     text-decoration: none;
     color: #2da9d2;
 }
@@ -74,6 +74,10 @@ article li {
 
 th, td {
     padding: 0 0.5em 0 0.5em;
+}
+
+footer {
+    color: #999;
 }
 
 /* Some utility classes */
