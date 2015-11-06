@@ -203,11 +203,17 @@ footer {
     max-width: 100%;
     max-height: 200px;
     width: auto;
-    height: 200px;
+    height: auto;
+}
+
+.img-slides {
+    margin: 0;
+    line-height: 200px;
 }
 
 .img-slides img {
     display: none;
+    vertical-align: middle;
 }
 
 @media (max-width: 600px) {
