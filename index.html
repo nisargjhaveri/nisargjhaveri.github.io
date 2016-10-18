@@ -5,47 +5,68 @@
         <meta charset="UTF-8">
         <meta name="description" content="Personal website of Nisarg Jhaveri. You can find all the useful information about him here.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" href="favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="static/css/main.css">
+        <script src="static/js/ajax.js"></script>
     </head>
     <body>
         <div class="container">
             <header>
-                <h1>Nisarg Jhaveri<small>Another one who thinks he can code!</small></h1>
+                <h1>Nisarg Jhaveri <small>Another one who thinks he can code!</small></h1>
             </header>
-            <hr>
-            <nav>
-                <a href="./" class="active">Home</a>
-                <a href="about">About</a>
-                <a href="projects">Projects and Hacks</a>
-                <a href="skills">Skills</a>
-                <a href="find">Find me</a>
-                <a href="blog">Blog</a>
-            </nav>
             <hr>
             <article class="columns parent">
                 <section class="column-half">
-                    <h2>Who am I?</h2>
-                    <ul>
-                        <li>An undergraduate research student of Computer Science and Engineering at <a target="_blank" href="http://www.iiit.ac.in">IIIT-H</a></li>
-                        <li>A software developer and Free and Open Source Software enthusiast</li>
-                    </ul>
+                    <h2>Project sites on GitHub</h2>
+                    <div id="messages">Loading...</div>
+                    <div id="site-list"></div>
                 </section>
                 <section class="column-half">
-                    <h2>What I like?</h2>
-                    <p>A lot of things! Some of them are,</p>
-                    <ul>
-                        <li>Developing something that I can see being used.</li>
-                        <li>Automating things. <a target="_blank" href="http://www.commitstrip.com/en/2014/05/30/for-the-love-of-code/">This comic</a> is quite relevant sometimes, though!</li>
-                        <li>Teaching some "Human-only things" to computers.</li>
-                        <li>Spending some time with nature.</li>
-                        <li>JavaScript :P</li>
-                        <li>And much more...</li>
-                    </ul>
+                    <h2>External links</h2>
+                    <p><a href="http://nisargjhaveri.com">Main website - nisargjhaveri.com</a></p>
+                    <p><a href="https://github.com/nisargjhaveri">My GitHub profile</a></p>
                 </section>
             </article>
             <hr>
         </div>
+
+        <script>
+            var blackList = ["nisargjhaveri.github.io"];
+
+            ajax("https://api.github.com/users/nisargjhaveri/repos")
+                .type("json")
+                .success(function(e) {
+                    var messagesDiv = document.getElementById("messages");
+                    var listDiv = document.getElementById("site-list");
+
+                    var repos = this.response.filter(function(repo) {
+                        return (blackList.indexOf(repo.name) < 0) && repo.has_pages;
+                    });
+
+                    var repoHTML;
+
+                    for (var i = 0; i < repos.length; i++) {
+                        repoHTML = "<section class='subsection'>" +
+                            "<h3><a href='/" + repos[i].name + "/'>" + repos[i].name + "</a></h3>";
+
+                        if (repos[i].description) {
+                            repoHTML += "<p class='indent'>" + repos[i].description + "</p>";
+                        }
+
+                        repoHTML += "</section>";
+                        listDiv.innerHTML += repoHTML;
+                    }
+
+                    messagesDiv.innerHTML = "";
+                })
+                .fail(function(e) {
+                    var messagesDiv = document.getElementById("messages");
+
+                    messagesDiv.innerHTML = "Sorry, could not load the list. :/" +
+                        "<br>" + "Try again later?";
+                })
+                .send();
+        </script>
 
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
